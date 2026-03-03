@@ -1,73 +1,97 @@
-# React + TypeScript + Vite
+# Insider One Case Study Presentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive web presentation for the **Chaos to Cadence / Atlas Case Study** story, prepared for design leadership interviews.
 
-Currently, two official plugins are available:
+## What this project is
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project turns a classic deck into a keyboard-driven website:
 
-## React Compiler
+- Slide-based flow (not scroll storytelling)
+- Bilingual content (`EN / TR` toggle)
+- Smooth transitions with `motion`
+- Insider One visual language (Figtree, dark header, cream surface, orange-red emphasis)
+- Icon-based bullet lists using `Nucleo UI Fill Duo 18`
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+- `React 19`
+- `TypeScript`
+- `Vite`
+- `motion`
+- `nucleo-ui-fill-duo-18`
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Key features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- 17-slide narrative (intro + core case + outro)
+- Keyboard navigation:
+  - `ArrowRight` / `Space`: next slide
+  - `ArrowLeft` / `Backspace`: previous slide
+  - `Home`: first slide
+  - `End`: last slide
+- EN/TR language switch with animated pill
+- Profile visuals and contextual inline avatar tags (e.g. Umutcan next to related line)
+- Responsive behavior for desktop and mobile
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## Project structure
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```text
+.
+├── public/
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── SlideContent/
+│   │   ├── SlideShell.tsx
+│   │   ├── ProgressBar.tsx
+│   │   └── NavHints.tsx
+│   ├── data/
+│   │   └── slides.ts
+│   ├── styles/
+│   │   ├── tokens.css
+│   │   └── global.css
+│   ├── i18n.ts
+│   ├── types.ts
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+└── package.json
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Local setup
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1) Install
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 2) Run development server
+
+```bash
+npm run dev
+```
+
+Then open the local URL shown in terminal (usually `http://localhost:5173`).
+
+### 3) Production build
+
+```bash
+npm run build
+```
+
+### 4) Preview production build
+
+```bash
+npm run preview
+```
+
+## Content updates
+
+- Slide content is managed in [`src/data/slides.ts`](/Users/huseyinemanet/Desktop/Insider%20One/src/data/slides.ts)
+- UI labels and fixed strings are in [`src/i18n.ts`](/Users/huseyinemanet/Desktop/Insider%20One/src/i18n.ts)
+- Global styling and layout rules are in [`src/styles/global.css`](/Users/huseyinemanet/Desktop/Insider%20One/src/styles/global.css)
+
+## Notes
+
+- Repo is now organized from the **root** (no nested `web-presentation` folder).
+- The deck is designed for presentation mode first; content density and motion timing are tuned for live speaking.
