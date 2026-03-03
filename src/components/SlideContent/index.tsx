@@ -20,7 +20,6 @@ import {
   IconUsersFillDuo18,
 } from 'nucleo-ui-fill-duo-18'
 import type { Slide } from '../../types'
-import umutcanImage from '../../assets/umutcan.jpeg'
 
 type SlideContentProps = {
   slide: Slide
@@ -50,11 +49,6 @@ function pickBulletIcon(item: string): IconComponent {
   if (text.includes('closing') || text.includes('kapanış')) return IconFlagFillDuo18
 
   return IconCheckFillDuo18
-}
-
-function showUmutcanTag(item: string): boolean {
-  const text = item.toLowerCase()
-  return text.includes('product design manager')
 }
 
 export function SlideContent({ slide, profileImageSrc }: SlideContentProps) {
@@ -154,15 +148,7 @@ export function SlideContent({ slide, profileImageSrc }: SlideContentProps) {
               }}
             >
               <Icon className="slide-item-icon" size={18} aria-hidden="true" />
-              <span className="slide-item-text">
-                {item}
-                {showUmutcanTag(item) ? (
-                  <span className="person-chip" aria-label="Umutcan">
-                    <img src={umutcanImage} alt="Umutcan" className="person-chip__avatar" />
-                    <span className="person-chip__name">Umutcan</span>
-                  </span>
-                ) : null}
-              </span>
+              <span className="slide-item-text">{item}</span>
             </motion.li>
             )
           })}
