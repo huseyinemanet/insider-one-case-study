@@ -7,8 +7,8 @@
   --io-border: #d7d8dd;
   --io-accent: #f4482b;
   --io-gradient: linear-gradient(0deg, #e92e2f 0%, #ff6126 100%);
-  --io-radius-lg: 24px;
-  --io-radius-md: 14px;
-  --io-radius-pill: 999px;
-  --io-shadow: 0 30px 90px rgba(24, 24, 27, 0.26);
+  --io-radius-lg: 1.5rem;
+  --io-radius-md: 0.875rem;
+  --io-radius-pill: 62.4375rem;
+  --io-shadow: 0 1.875rem 5.625rem rgba(24, 24, 27, 0.26);
 }

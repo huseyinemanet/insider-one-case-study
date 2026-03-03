@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { motion, useReducedMotion } from 'motion/react'
 import type { ComponentType } from 'react'
 import {
   IconAlertWarningFillDuo18,
@@ -27,7 +27,6 @@ type SlideContentProps = {
   profileImageSrc?: string
 }
 
-const transition = { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const }
 type IconComponent = ComponentType<Record<string, unknown>>
 
 function pickBulletIcon(item: string): IconComponent {
@@ -59,6 +58,11 @@ function showUmutcanTag(item: string): boolean {
 }
 
 export function SlideContent({ slide, profileImageSrc }: SlideContentProps) {
+  const reduceMotion = useReducedMotion()
+  const transition = reduceMotion
+    ? { duration: 0 }
+    : { duration: 0.32, ease: [0.22, 1, 0.36, 1] as const }
+
   if (slide.layout === 'minimal') {
     return (
       <section className="minimal-block">
@@ -84,7 +88,11 @@ export function SlideContent({ slide, profileImageSrc }: SlideContentProps) {
             {slide.showPhoto ? (
               <div>
                 {profileImageSrc ? (
-                  <img src={profileImageSrc} alt="Profile" className="profile-photo" />
+                  <img
+                    src={profileImageSrc}
+                    alt={slide.presenter ? `Profile photo of ${slide.presenter}` : 'Profile photo'}
+                    className="profile-photo"
+                  />
                 ) : (
                   <div className="profile-placeholder" aria-label="Profile photo placeholder" />
                 )}

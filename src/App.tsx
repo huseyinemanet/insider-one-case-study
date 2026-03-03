@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { NavHints } from './components/NavHints'
 import { ProgressBar } from './components/ProgressBar'
@@ -11,26 +11,30 @@ import type { Locale } from './types'
 
 const profileImageSrc: string | undefined = profileImage
 
-const transition = {
-  duration: 0.38,
-  ease: [0.22, 1, 0.36, 1] as const,
-}
-
-const slideVariants = {
-  enter: (direction: 1 | -1) => ({ x: direction > 0 ? 90 : -90, opacity: 0 }),
-  center: { x: 0, opacity: 1 },
-  exit: (direction: 1 | -1) => ({ x: direction > 0 ? -90 : 90, opacity: 0 }),
-}
-
 function App() {
   const [locale, setLocale] = useState<Locale>('en')
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [direction, setDirection] = useState<1 | -1>(1)
   const slideCanvasRef = useRef<HTMLDivElement | null>(null)
+  const reduceMotion = useReducedMotion()
 
   const slides = useMemo(() => slidesByLocale[locale], [locale])
   const ui = useMemo(() => uiByLocale[locale], [locale])
   const currentSlide = useMemo(() => slides[currentSlideIndex], [slides, currentSlideIndex])
+  const transition = useMemo(
+    () => (reduceMotion ? { duration: 0 } : { duration: 0.38, ease: [0.22, 1, 0.36, 1] as const }),
+    [reduceMotion],
+  )
+  const slideVariants = useMemo(
+    () => ({
+      enter: (dir: 1 | -1) =>
+        reduceMotion ? { x: 0, opacity: 0 } : { x: dir > 0 ? 90 : -90, opacity: 0 },
+      center: { x: 0, opacity: 1 },
+      exit: (dir: 1 | -1) =>
+        reduceMotion ? { x: 0, opacity: 0 } : { x: dir > 0 ? -90 : 90, opacity: 0 },
+    }),
+    [reduceMotion],
+  )
 
   const move = useCallback((nextIndex: number) => {
     setCurrentSlideIndex((previousIndex) => {
@@ -61,21 +65,11 @@ function App() {
         move(currentSlideIndex - 1)
       }
 
-      if (event.key === 'Home') {
-        event.preventDefault()
-        move(0)
-      }
-
-      if (event.key === 'End') {
-        event.preventDefault()
-        move(slides.length - 1)
-      }
-
     }
 
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [currentSlideIndex, move, slides.length])
+  }, [currentSlideIndex, move])
 
   useEffect(() => {
     const canvas = slideCanvasRef.current
@@ -223,6 +217,9 @@ function App() {
 
   return (
     <div className="app-root">
+      <a className="skip-link" href="#slide-canvas">
+        Skip to slide content
+      </a>
       <ProgressBar current={currentSlideIndex} total={slides.length} />
 
       <div className="deck-stage">
@@ -233,7 +230,16 @@ function App() {
           locale={locale}
           onLocaleChange={setLocale}
         >
-          <div ref={slideCanvasRef} className="slide-canvas">
+          <div
+            ref={slideCanvasRef}
+            id="slide-canvas"
+            className="slide-canvas"
+            role="region"
+            tabIndex={0}
+            aria-roledescription="slide"
+            aria-label={`${currentSlide.title}. Slide ${currentSlideIndex + 1} of ${slides.length}.`}
+            aria-describedby="slide-navigation-help"
+          >
             <AnimatePresence initial={false} custom={direction} mode="wait">
               <motion.div
                 key={`${locale}-${currentSlide.id}`}
@@ -253,6 +259,10 @@ function App() {
       </div>
 
       <NavHints ui={ui} />
+      <p id="slide-navigation-help" className="sr-only">
+        Use Left and Right Arrow keys and Space or Backspace keys. On touch devices, swipe
+        left or right on the slide area.
+      </p>
     </div>
   )
 }
