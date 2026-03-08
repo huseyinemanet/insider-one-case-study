@@ -20,6 +20,18 @@ const en: Slide[] = [
     sticky: 'I built a way of working, not just UI.',
   },
   {
+    id: '01b-about',
+    section: 'Atlas Case Study',
+    title: 'Who I am',
+    body: [
+      '15 years across product, design, and development',
+      'Worked across startups, enterprises, and agencies',
+      'Used to operating in both messy and scaled environments',
+      'That is why I naturally think in systems, not just screens',
+    ],
+    sticky: 'I build products, systems, and teams across different scales.',
+  },
+  {
     id: '02-shock',
     section: 'Atlas Case Study',
     title: 'The hypergrowth shock (1 year)',
@@ -50,10 +62,10 @@ const en: Slide[] = [
     section: 'Atlas Case Study',
     title: 'Why this was a leadership problem',
     body: [
-      'Inconsistency -> rework + debate',
-      'Platform mismatch (iOS vs Android)',
-      'Hard onboarding for new hires',
-      'Quality became unpredictable',
+      'Inconsistency created rework and debate',
+      'Platform mismatch showed up between iOS and Android',
+      'New hires had a harder ramp-up',
+      'Quality became harder to predict at scale',
     ],
     sticky: 'This was not a UI problem. It was a scalability problem.',
   },
@@ -94,10 +106,10 @@ const en: Slide[] = [
     section: 'Atlas Case Study',
     title: 'Execution: Figma -> iOS/Android -> codebase',
     body: [
-      'Built tokens, type, color, spacing, components',
+      'Built tokens, type, color, spacing, and components',
       'Partnered with iOS/Android teams',
       'Aligned with Engineering Managers',
-      'Integrated into the codebase',
+      'Integrated Atlas into the codebase',
     ],
     sticky: "If it's not in code, it's not real.",
   },
@@ -112,7 +124,12 @@ const en: Slide[] = [
     id: '12-rollout',
     section: 'Atlas Case Study',
     title: 'Rollout: making it the default',
-    body: ['Designers started composing, not redrawing', 'Pattern-first expectation', 'Review checkpoints (DS compliance)', 'Exceptions require rationale'],
+    body: [
+      'Designers started composing, not redrawing',
+      'Pattern-first expectation',
+      'Review checkpoints (Atlas compliance)',
+      'Exceptions required rationale and ownership',
+    ],
     sticky: 'I made the right thing the easy thing.',
   },
   {
@@ -197,6 +214,18 @@ const tr: Slide[] = [
     sticky: 'Sadece UI değil, bir çalışma sistemi kurdum.',
   },
   {
+    id: '01b-about',
+    section: 'Atlas Case Study',
+    title: 'Ben kimim',
+    body: [
+      '15 yıldır product, design ve development tarafında çalışıyorum',
+      'Startup, kurumsal ve ajans yapılarında görev aldım',
+      'Hem dağınık hem de ölçeklenmiş ortamlarda üretmeye alışığım',
+      'Bu yüzden ekranlardan çok sistemler üzerinden düşünüyorum',
+    ],
+    sticky: 'Farklı ölçeklerde ürün, sistem ve ekip inşa ettim.',
+  },
+  {
     id: '02-shock',
     section: 'Atlas Case Study',
     title: 'Hiper büyüme şoku (1 yıl)',
@@ -226,7 +255,12 @@ const tr: Slide[] = [
     id: '05-leadership-problem',
     section: 'Atlas Case Study',
     title: 'Neden bu bir liderlik problemiydi',
-    body: ['Tutarsızlık -> rework + tartışma', 'Platform mismatch (iOS vs Android)', 'Zor onboarding', 'Kalite öngörülemezdi'],
+    body: [
+      'Tutarsızlık rework ve tartışma yaratıyordu',
+      'Platform mismatch iOS ve Android arasında görünüyordu',
+      'Yeni ekip üyeleri daha zor ramp-up oluyordu',
+      'Kalite, ölçek büyüdükçe öngörülmesi zor hale geliyordu',
+    ],
     sticky: 'Bu bir UI problemi değil, ölçeklenme problemiydi.',
   },
   {
@@ -261,7 +295,12 @@ const tr: Slide[] = [
     id: '10-execution',
     section: 'Atlas Case Study',
     title: 'Execution: Figma -> iOS/Android -> codebase',
-    body: ['Token / type / color / spacing / components', 'iOS/Android ekip ortaklığı', 'EM alignment', 'Codebase entegrasyonu'],
+    body: [
+      'Token / type / color / spacing / components',
+      'iOS/Android ekip ortaklığı',
+      'EM alignment',
+      'Atlas codebase içine entegre edildi',
+    ],
     sticky: 'Kodda yoksa gerçek değildir.',
   },
   {
@@ -275,7 +314,12 @@ const tr: Slide[] = [
     id: '12-rollout',
     section: 'Atlas Case Study',
     title: 'Rollout: default hale getirmek',
-    body: ['Compose, redrawing yerine geçti', 'Pattern-first beklenti', 'DS compliance checkpointleri', 'Exception için gerekçe zorunlu'],
+    body: [
+      'Compose, redrawing yerine geçti',
+      'Pattern-first beklenti',
+      'Review içinde Atlas compliance checkpointleri',
+      'Exception için gerekçe ve sahiplik zorunlu oldu',
+    ],
     sticky: 'Doğru olanı en kolay olan hale getirdim.',
   },
   {

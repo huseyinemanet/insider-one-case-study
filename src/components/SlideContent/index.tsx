@@ -11,6 +11,7 @@ import {
   IconCodeFillDuo18,
   IconFlagFillDuo18,
   IconFoldersFillDuo18,
+  IconHandshakeFillDuo18,
   IconLayersFillDuo18,
   IconLightbulbFillDuo18,
   IconLinkFillDuo18,
@@ -41,6 +42,12 @@ function pickBulletIcon(item: string): IconComponent {
   if (text.includes('quality') || text.includes('tutarl') || text.includes('consistency') || text.includes('compliance')) return IconTargetFillDuo18
   if (text.includes('governance') || text.includes('review') || text.includes('versioning') || text.includes('checkpoint') || text.includes('check')) return IconClipboardCheckFillDuo18
   if (text.includes('documentation') || text.includes('guideline') || text.includes('best practice') || text.includes('dokümantasyon') || text.includes('rehber')) return IconBookOpenFillDuo18
+  if (
+    text.includes('partnered with ios/android teams') ||
+    text.includes('ios/android ekip ortaklığı')
+  ) {
+    return IconHandshakeFillDuo18
+  }
   if (text.includes('code') || text.includes('figma') || text.includes('ios') || text.includes('android') || text.includes('em')) return IconCodeFillDuo18
   if (text.includes('contract') || text.includes('link') || text.includes('pattern-first') || text.includes('exception')) return IconLinkFillDuo18
   if (text.includes('strategy') || text.includes('strateji') || text.includes('roadmap') || text.includes('goal') || text.includes('hedef')) return IconRoadmapFillDuo18

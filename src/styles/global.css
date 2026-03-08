@@ -224,7 +224,7 @@ body {
 .slide-item-icon {
   flex: 0 0 auto;
   margin-top: 0;
-  color: #47526a;
+  color: var(--io-accent);
 }
 
 .slide-item-text {
